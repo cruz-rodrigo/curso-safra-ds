@@ -1,2 +1,0 @@
-O Python é uma linguagem interpretada, i.e, a maneira de excução de códigos é feitas linha a linha, 
-É importante definir bem a ordem das variáveis e funções.
