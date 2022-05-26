@@ -14,7 +14,7 @@ def obter_dados():
 
 def listar_categorias(dados: list) -> list: 
     '''
-    O parâmetro "dados" é lista de dicionários que representa os produtos.
+    O parâmetro "dados" é uma lista de dicionários que representa os produtos.
     Essa função retorna uma lista contendo todas as categorias dos diferentes produtos.
     '''
     categorias = []
