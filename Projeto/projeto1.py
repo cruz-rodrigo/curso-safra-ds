@@ -80,6 +80,21 @@ def top_10_baratos(dados: list) -> dict:
     
     return top_menos[:10]
 
+def validar_categoria(categoria:str)->str:
+    '''
+    O parâmetro "categoria" é uma string
+    Esta função valida se a categoria existe ou é inválida, retorna uma string.
+    '''
+    categorias = listar_categorias(dados)
+
+    while categoria not in categorias:
+        print("Categoria não encontrada ou inválida!")
+        categoria = input(f"\nInsira corretamente categoria desejada: ").lower()
+    else:
+        print(f"\nCategoria encontrada!")
+
+        return categoria    
+
 def menu(dados: list) -> None:
     
     escolha = type(int)
@@ -108,7 +123,9 @@ def menu(dados: list) -> None:
                 print(f"{i+1} - {sorted(listar_categorias(dados))[i]}")
 
         elif escolha == 2:
-            categoria = input("Insira a categoria desejada: ")
+            categoria = input("Insira a categoria desejada: ").lower()
+            categoria = validar_categoria(categoria)
+
             lista_por_categoria = listar_por_categoria(dados,categoria)
 
             for i in range(0,len(lista_por_categoria)):
@@ -117,12 +134,14 @@ def menu(dados: list) -> None:
 
         elif escolha == 3:
             categoria = input("Insira a categoria desejada: ")
+            categoria = validar_categoria(categoria)
 
             mais_caro = produto_mais_caro(dados, categoria)
             print(f'\nO produto com id: {mais_caro["id"]} é o mais caro da categoria {categoria}. \nNo valor de R$ {mais_caro["preco"]}')
 
         elif escolha == 4:
             categoria = input("Insira a categoria desejada: ")
+            categoria = validar_categoria(categoria)
 
             mais_barato = produto_mais_barato(dados, categoria)
             print(f'\nO produto com id: {mais_barato["id"]} é o mais barato da categoria {categoria}. \nNo valor de R$ {mais_barato["preco"]}')
@@ -142,7 +161,7 @@ def menu(dados: list) -> None:
        
         elif escolha == 0:
 
-            print('\nFim...\nObrigado por utilizar.\n')
+            print('\nEncerrando...\n\nAté breve!.\n')
 
         else:
             print(f'\nATENÇÃO! Escolha inválida, escolha novamente!\n')
